@@ -1,7 +1,6 @@
 from odesolver import ODESolver, runge
 
 
-# Define a subclass for Euler's method
 class EulerMethod(ODESolver):
     def __init__(self, f, a, b, h, y0, eps):
         super().__init__(f, a, b, h, y0, eps)

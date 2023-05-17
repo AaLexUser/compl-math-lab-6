@@ -5,9 +5,10 @@ import matplotlib.pyplot as plt
 
 class Plot:
     @staticmethod
-    def plot_all(a, b, exact_f, euler, runge_kutta, adams):
-        x = np.linspace(a, b, 100)
-        y = [exact_f(x) for x in x]
+    def plot_all(a, b, exact_solution, euler, runge_kutta, adams):
+        dots = exact_solution
+        x = [x for x, _ in dots]
+        y = [y for _, y in dots]
         plt.plot(x, y, color='red', label='Exact solution')
         dots = euler
         x = [x for x, _ in dots]
