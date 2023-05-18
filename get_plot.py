@@ -9,7 +9,7 @@ class Plot:
         dots = exact_solution
         x = [x for x, _ in dots]
         y = [y for _, y in dots]
-        plt.plot(x, y, color='red', label='Exact solution')
+        plt.plot(x, y, color='red', label='Exact solution', linewidth=3)
         dots = euler
         x = [x for x, _ in dots]
         y = [y for _, y in dots]

@@ -1,5 +1,5 @@
 from odesolver import ODESolver, runge
-
+import bisect
 
 # Define a subclass for Runge-Kutta method
 class RungeKuttaMethod(ODESolver):
@@ -29,10 +29,12 @@ class RungeKuttaMethod(ODESolver):
         # Method to solve the ODE using Runge-Kutta method and adjust the step size if needed
         dots = self.__loop(self.y0)
         yh = dots
-        dots = self.__loop(self.y0)
         self.h /= 2
+        dots = self.__loop(self.y0)
         yh2 = dots
         err = runge(yh[-1][-1], yh2[-1][-1], 4)
         if err > self.eps:
-            return RungeKuttaMethod(self.f, self.a, self.b, self.h / 2, self.y0, self.eps).solve()
+            return RungeKuttaMethod(self.f, self.a, self.b, h = self.h / 2, y0 = self.y0, eps = self.eps).solve()
+        # index = bisect.bisect_right([x for x,_ in yh], self.b + self.h)
+        # del yh[index:]
         return yh

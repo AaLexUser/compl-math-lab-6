@@ -47,14 +47,14 @@ class DataGetter:
     def get_function(self):
         # Method to get the function defining the ODE from the user
         print('Choose function:')
-        print('1. y\' = y - x^2 + 1  на [1, 2]  y(1) = 2')
-        print('2. y\' = 1 + (y - x)^2 на [0, 1]  y(0) = 1')
-        print('3. y\' = y / x + x / y на [1, 2]  y(1) = 1')
-        print('4. y\' = y + (1 + x) * y^2 на [1, 1.5]  y(1) = -1')
-        functions = [lambda x, y: y - x ** 2 + 1,
+        print('1. y\' = x^2 - 2y')
+        print('2. y\' = 1 + (y - x)^2')
+        print('3. y\' = y / x + x / y')
+        print('4. y\' = y + (1 + x) * y^2')
+        functions = [lambda x, y: (x ** 2) - 2 * y,
                      lambda x, y: 1 + (y - x) ** 2,
                      lambda x, y: y / x + x / y,
-                     lambda x, y: y + (1 + x)* y ** 2]
+                     lambda x, y: y + (1 + x) * y ** 2]
         n = int(input()) - 1
         self.f = functions[n]
 

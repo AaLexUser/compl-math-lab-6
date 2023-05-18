@@ -1,4 +1,5 @@
 from odesolver import ODESolver, runge
+from scipy.integrate import quad
 
 
 class EulerMethod(ODESolver):
@@ -13,7 +14,7 @@ class EulerMethod(ODESolver):
         # Method to loop over the interval and update the solution
         x = self.a
         dots = [(self.a, y0)]
-        while x < self.b:
+        while (x+self.h <= self.b):
             y_next = self.euler_step(x, y0)
             dots.append((x + self.h, y_next))
             x += self.h
